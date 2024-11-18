@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace Sanic.Content.Items.Weapons
+{
+    public class Class1 : ModItem
+    {
+        public override void SetDefaults()
+        {
+            Item.width = 32;
+            Item.height = 32;
+
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.useTime = 15;
+            Item.useAnimation = 15;
+            Item.autoReuse = true;
+
+            Item.DamageType = DamageClass.Melee;
+            Item.damage = 10;
+            Item.knockBack = 10;
+            Item.crit = 10;
+
+            Item.value = Item.buyPrice(silver: 20);
+            Item.rare = ItemRarityID.Gray;
+        }
+        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int DamageDone)
+        {
+            target.AddBuff(BuffID.Frostburn2, 360)
+        }
+    }
+}
